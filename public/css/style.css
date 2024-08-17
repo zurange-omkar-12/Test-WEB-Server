@@ -5947,7 +5947,7 @@ input[type="submit"].btn-block {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.9rem 1.5rem;
 }
 .navbar > .container,
 .navbar > .container-fluid {
@@ -5991,7 +5991,7 @@ input[type="submit"].btn-block {
 }
 .navbar-collapse {
   flex-basis: 100%;
-  flex-grow: 1;
+  flex-grow: 0.5;
   align-items: center;
 }
 .navbar-toggler {
@@ -9071,7 +9071,7 @@ button.bg-dark:hover {
 }
 .mb-4,
 .my-4 {
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 0.8rem !important;
 }
 .ml-4,
 .mx-4 {
@@ -9879,7 +9879,7 @@ button.bg-dark:hover {
     padding-left: 1.5rem !important;
   }
   .p-md-5 {
-    padding: 3rem !important;
+    padding: 1.4rem !important;
   }
   .pt-md-5,
   .py-md-5 {
@@ -11767,4 +11767,16 @@ tr {
   a[href]:after {
     content: none !important;
   }
+}
+
+.naukri {
+  font-family: Satoshi !important;
+}
+
+.nI-gNb-sb__seperator {
+  background: #e7e7f1;
+  background: var(--N400, #e7e7f1);
+  height: 30px;
+  margin-top: 12px;
+  margin-right: 8px;
 }
