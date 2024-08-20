@@ -1,20 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Anton|Montserrat:wght@400; 900&display=swap");
-@font-face {
-  font-family: FontAwesome;
-  src: url(/fonts/vendor/font-awesome/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713);
-  src: url(/fonts/vendor/font-awesome/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713)
-      format("embedded-opentype"),
-    url(/fonts/vendor/font-awesome/fontawesome-webfont.woff2?af7ae505a9eed503f8b8e6982036873e)
-      format("woff2"),
-    url(/fonts/vendor/font-awesome/fontawesome-webfont.woff?fee66e712a8a08eef5805a46892932ad)
-      format("woff"),
-    url(/fonts/vendor/font-awesome/fontawesome-webfont.ttf?b06871f281fee6b241d60582ae9369b9)
-      format("truetype"),
-    url(/fonts/vendor/font-awesome/fontawesome-webfont.svg?912ec66d7572ff821749319396470bde)
-      format("svg");
-  font-weight: 400;
-  font-style: normal;
-}
+ 
 .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -10973,17 +10958,7 @@ a.text-dark:hover {
 * {
   margin: 0;
 }
-@font-face {
-  font-family: FontAwesome;
-  font-display: swap;
-  src: url(/fonts/vendor/font-awesome/fontawesome-webfont.woff2) format("woff2"),
-    url(/fonts/vendor/font-awesome/fontawesome-webfont.eot) format("eot"),
-    url(/fonts/vendor/font-awesome/fontawesome-webfont.ttf) format("ttf"),
-    url(/fonts/vendor/font-awesome/fontawesome-webfont.svg) format("svg"),
-    url(/fonts/vendor/font-awesome/fontawesome-webfont.woff) format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
+ 
 .blink_me {
   animation: blinker 2s linear infinite;
 }
@@ -11780,3 +11755,67 @@ tr {
   margin-top: 12px;
   margin-right: 8px;
 }
+
+
+
+.dropdown-container {
+  position: relative;
+  width: 200px;
+}
+
+.dropdown-input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: Satoshi; /* Set the font-family for the input */
+  font-weight: normal; /* Ensure the input text is not bold */
+}
+
+.dropdown-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: none; /* Hide the dropdown initially */
+  max-height: 200px; /* Adjust the height to show 5 elements */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+  font-family: Satoshi; /* Set the font-family for the dropdown items */
+  font-weight: normal; /* Ensure the dropdown items are not bold */
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Scrollbar styling */
+.dropdown-menu::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+  border-radius: 4px; /* Rounded corners on the scrollbar track */
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Rounded corners on the scrollbar thumb */
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb on hover */
+}
+
+
