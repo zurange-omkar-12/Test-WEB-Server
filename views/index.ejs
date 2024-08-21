@@ -25,7 +25,7 @@
      <div class="container p-md-0">
       <div id="app">
        <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand abs" href="https://xplore.co.in" aria-label="Homepage">
+        <a class="navbar-brand abs" href="http://localhost:4000/" aria-label="Homepage">
          <img src="https://xplore.co.in/img/xplore.png " width="100px" class="ml-md-1" alt="Xplore logo " type="image/png" />
         </a>
         <div class="naukriBorder" style="border-radius: 40px; border: 1px solid var(--N400, #e7e7f1); width: 880px;">
@@ -34,9 +34,17 @@
           <ul class="navbar-nav ml-auto mt-4 mt-lg-0">
            <div class="naukri" style="padding-top: 9px; padding-bottom: 9px; padding-right: 9px;">
             <li style="margin-right: 0px;">
-             <input id="inputSkills" class="form-control input-group-prepend" placeholder="Enter keyword / designation / companies" tabindex="0" type="text" value="" style="width: 370px; border: none;" />
+             <input id="inputA" class="form-control input-group-prepend" placeholder="Enter two primary skills" tabindex="0" type="text" value="" style="width: 370px; border: none;" />
+
+             <ul id="dropdownA" class="dropdown-menu" style="width: 350px; left: 175px; top: 65px;">
+              <% jobs.data.uniqueskills.forEach(element => { %>
+              <li value="<%=element%>" title="<%=element%>"><%=element%></li>
+
+              <% }); %>
+             </ul>
             </li>
            </div>
+
            <div class="nI-gNb-sb__seperator" style="width: 1px;"></div>
            <div class="naukri" style="width: 185px; padding-top: 9px; padding-bottom: 9px;">
             <!--          -->
@@ -44,7 +52,7 @@
             <div class="dropdown-container" id="dropdown-container1">
              <input
               class="form-control input-group-prepend dropdown-input"
-              id="inputExperience"
+              id="inputB"
               spellcheck="false"
               autocomplete="off"
               title=""
@@ -57,7 +65,7 @@
               readonly
              />
 
-             <ul id="dropdownMenu" class="dropdown-menu" style="left: -10px; top: 40px;">
+             <ul id="dropdownB" class="dropdown-menu" style="left: -10px; top: 40px;">
               <li value="0" title="Fresher">Fresher (less than 1 year)</li>
 
               <% for(let j=1;j<=25;j++) { %>
@@ -72,9 +80,9 @@
            <div class="nI-gNb-sb__seperator" style="width: 1.3px;"></div>
            <div class="naukri" style="width: 185px; padding-top: 9px; padding-bottom: 9px;">
             <div class="dropdown-container" id="dropdown-container2">
-             <input id="inputLoction" class="form-control input-group-prepend" placeholder="Enter location" tabindex="0" type="text" value="" style="border: none; width: 175px;" />
+             <input id="inputC" class="form-control input-group-prepend" placeholder="Enter location" tabindex="0" type="text" value="<%= locals.jobLocation %>" style="border: none; width: 175px;" />
 
-             <ul id="dropdownMenuinputLoction" class="dropdown-menu" style="left: -10px; top: 40px;">
+             <ul id="dropdownC" class="dropdown-menu" style="left: -10px; top: 40px;">
               <% jobs.data.uniqueJobLocations.forEach(element => { %>
               <li value="<%=element%>" title="<%=element%>"><%=element%></li>
 
@@ -167,7 +175,7 @@
              <% } else { %>
 
              <li class="page-item">
-              <button class="page-link" onclick="getRequiredPage(<%=(parseInt(jobs.data.pageNo)-1)%>)">&laquo;</button>
+              <button class="page-link" onclick="getRequiredPage((<%=parseInt(jobs.data.pageNo)-1%>),(<%=jobs.data.pageNo%>)%>)">&laquo;</button>
              </li>
 
              <% } %> <% for(let i=1;i<=jobs.data.totalPages;i++) { if(i === parseInt(jobs.data.pageNo)) { %>
@@ -177,7 +185,7 @@
              <% }else{ %>
 
              <li class="page-item">
-              <button class="page-link" onclick="getRequiredPage(<%=i%>)"><%=i%></button>
+              <button class="page-link" onclick="getRequiredPage((<%=i%>),(<%=jobs.data.pageNo%>))"><%=i%></button>
              </li>
 
              <%} }%> <%if(parseInt(jobs.data.totalPages)===parseInt(jobs.data.pageNo)) { %>
@@ -189,7 +197,7 @@
              <% }else{%>
 
              <li class="page-item">
-              <button class="page-link" onclick="getRequiredPage(<%=(parseInt(jobs.data.pageNo)+1)%>)">&raquo;</button>
+              <button class="page-link" onclick="getRequiredPage((<%=parseInt(jobs.data.pageNo)+1%>),(<%=jobs.data.pageNo%>))">&raquo;</button>
              </li>
 
              <%} %>

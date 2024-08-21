@@ -2,7 +2,6 @@ import express from "express";
 import path from "path";
 import axios from "axios";
 import bodyParser from "body-parser";
-import { log } from "console";
 
 // var jobDetails = [
 
@@ -82,7 +81,7 @@ app.get("/filter", async (req, res) => {
 
     // console.log("/"+jobDetails.data.pageNo);
 
-    res.render("index.ejs", { jobs: jobDetails });
+    res.render("index.ejs", { jobs: jobDetails, jobLocation: jobLocation });
   } catch (error) {}
 });
 
