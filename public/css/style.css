@@ -11818,4 +11818,7 @@ tr {
   background: #555; /* Color of the scrollbar thumb on hover */
 }
 
-
+.inputB,
+.inputC {
+  border: none;
+}

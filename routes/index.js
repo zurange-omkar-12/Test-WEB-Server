@@ -62,9 +62,7 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/filter", async (req, res) => {
-  console.log("Filterrrr");
-
-  console.log(req.query.jobLocation);
+ 
 
   try {
     let page = parseInt(req.query.page) || 1;

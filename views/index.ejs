@@ -34,7 +34,7 @@
           <ul class="navbar-nav ml-auto mt-4 mt-lg-0">
            <div class="naukri" style="padding-top: 9px; padding-bottom: 9px; padding-right: 9px;">
             <li style="margin-right: 0px;">
-             <input id="inputA" class="form-control input-group-prepend" placeholder="Enter two primary skills" tabindex="0" type="text" value="" style="width: 370px; border: none;" />
+             <input id="inputA" class="inputA form-control input-group-prepend" placeholder="Enter two primary skills" tabindex="0" type="text" value="" style="width: 370px; border: none;" />
 
              <ul id="dropdownA" class="dropdown-menu" style="width: 350px; left: 175px; top: 65px;">
               <% jobs.data.uniqueskills.forEach(element => { %>
@@ -51,7 +51,7 @@
 
             <div class="dropdown-container" id="dropdown-container1">
              <input
-              class="form-control input-group-prepend dropdown-input"
+              class="form-control input-group-prepend dropdown-input inputB"
               id="inputB"
               spellcheck="false"
               autocomplete="off"
@@ -61,7 +61,7 @@
               value=""
               name="experienceDD"
               tabindex="0"
-              style="border: none; width: 175px; background-color: #fff;"
+              style=" width: 175px; background-color: #fff;"
               readonly
              />
 
@@ -80,7 +80,7 @@
            <div class="nI-gNb-sb__seperator" style="width: 1.3px;"></div>
            <div class="naukri" style="width: 185px; padding-top: 9px; padding-bottom: 9px;">
             <div class="dropdown-container" id="dropdown-container2">
-             <input id="inputC" class="form-control input-group-prepend" placeholder="Enter location" tabindex="0" type="text" value="<%= locals.jobLocation %>" style="border: none; width: 175px;" />
+             <input id="inputC" class="form-control input-group-prepend inputC" placeholder="Enter location" tabindex="0" type="text" value="<%= locals.jobLocation %>" style=" width: 175px;" />
 
              <ul id="dropdownC" class="dropdown-menu" style="left: -10px; top: 40px;">
               <% jobs.data.uniqueJobLocations.forEach(element => { %>
@@ -90,7 +90,7 @@
              </ul>
             </div>
            </div>
-           <button class="btn btn-primary" style="margin: auto; border-radius: 60px; height: 40px; margin-right: 16px;" tabindex="0" type="submit" onclick="redirectToFilter()">
+           <button class="btn btn-primary" style="margin: auto; border-radius: 60px; height: 40px; margin-right: 16px;" tabindex="0" type="submit" onclick="handleSubmit()">
             <span class="ni-gnb-icn ni-gnb-icn-search"></span>
             <span>Search</span>
            </button>
