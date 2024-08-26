@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="csrf-token" content="WYwmTpROiQY9iLZouN6mYHx1uckWWiwccZWFoI9I" />
+  <meta name="theme-color" content="#c25054" />
+  <title><%= JOB.data.jobTitleB %>"</title>
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+  <link href="/css/style2.css" rel="stylesheet" />
+ </head>
+ <body>
+  <div id="app" style="min-height: 90vh; display: flex; flex-direction: column;">
+   <div class="wrapper-bg" style="background: white;">
+    <div class="nav-bg p-2" style="background: #fff;">
+     <div class="container p-md-0">
+      <div id="app">
+       <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand abs" href="/" aria-label="Homepage">
+         <img src="/images/Logo.png" width="100px" class="ml-md-1" alt="Get-Job-Openings" type="image/png" />
+        </a>
+       </nav>
+      </div>
+     </div>
+    </div>
+    <div class="line" style="padding: 1px; background: #f8f8f8;"></div>
+    <div>
+     <div class="banner">
+      <div class="p-5" style="background: #8ec6f9;"></div>
+     </div>
+     <div class="bg-light">
+      <div class="container">
+       <div class="row">
+        <div class="col-12 col-md-8">
+         <div class="bg-white mb-2 mb-md-5 p-4 p-md-5" style="margin-top: -50px;">
+          <div class="float-right pb-4 pl-4">
+           <div class="mb-3">
+            <picture class="">
+             <img src="/images/<%=JOB.data.CompanyName%>" class="d-print-none w-100" alt="<%= JOB.data.jobTitleB %>" style="max-width: 100px;" />
+            </picture>
+           </div>
+          </div>
+
+          <h1 class="mb-4 mt-3"><%= JOB.data.jobTitleB %></h1>
+
+          <div class=""></div>
+          <%- JOB.data.jobDesc %>
+         </div>
+        </div>
+        <div class="col-12 col-md-4">
+         <div class="mt-3">
+          <div class="alert alert-warning alert-important" role="alert">
+           <h5>Application posted date</h5>
+           <div class="display-5 h5"><%= JOB.data.Pdate %></div>
+          </div>
+
+          <% if (JOB.data.applyLink == "email") { %>
+
+          <div class="mt-3">
+           <div class="alert alert-warning alert-important" role="alert">
+            <h5>Share resume to below email</h5>
+            <div class="display-5 h5" style="font-weight: bold;"><%= JOB.data.email %></div>
+           </div>
+
+           <% } else {%>
+
+           <a href="<%= JOB.data.applyLink %>" data-toggle="modal" class="btn btn-lg btn-success w-100" data-target="#myModal2"> Apply Now</a>
+
+           <% } %>
+          </div>
+
+          <div class="mt-4 mb-5" style="word-wrap: break-word;">
+           <h3>Information</h3>
+
+           <div class="row mb-2">
+            <div class="col-6"><i class="fa fa-university"></i>&nbsp; Company</div>
+            <div class="col-6"><%= JOB.data.CompanyName %></div>
+           </div>
+
+           <div class="row mb-2">
+            <div class="col-6"><i class="fa fa-university"></i>&nbsp; Job Role</div>
+            <div class="col-6"><%= JOB.data.role %></div>
+           </div>
+
+           <div class="row mb-2">
+            <div class="col-6"><i class="fa fa-map-marker"></i>&nbsp; Locations</div>
+            <div class="col-6"> <% let temp1 = [...JOB.data.jobLocation]; temp1.forEach(element => { %> <%= element+", "%> <% }); %></div>
+           </div>
+
+           <div class="row mb-2">
+            <div class="col-6"><i class="fa fa-calendar"></i>&nbsp; Required Skills</div>
+            <div class="col-6"><% let temp2 = [...JOB.data.skills]; temp2.forEach(element => { %> <%= element+", "%> <% }); %></div>
+           </div>
+
+           <div class="row mb-2">
+            <div class="col-6"><i class="fa fa-graduation-cap"></i>&nbsp; Experience</div>
+            <div class="col-6">
+             <% if(JOB.data.jobExperience==1) { %> <%= "Fresher" %> <% } else { %> <%=Math.min(...JOB.data.jobExperience) %> - <%= Math.max(...JOB.data.jobExperience) %> Yrs <% } %>
+            </div>
+           </div>
+
+           <div class="row mb-2">
+            <div class="col-6"><i class="fa fa-graduation-cap"></i>&nbsp; Academics</div>
+            <div class="col-6">55% & above</div>
+           </div>
+
+           <div class="row mb-2">
+            <div class="col-6"><i class="fa fa-flickr"></i>&nbsp; Salary</div>
+            <div class="col-6">
+             NOT DISCLOSED
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+
+      <div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel2" aria-hidden="true">
+       <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+         <div class="modal-body">
+          Kindly Login to view the content
+         </div>
+
+         <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
+          <a href="https://xplore.co.in/login">
+           <button type="button" class="btn btn-success">Login</button>
+          </a>
+          <a href="https://xplore.co.in/eregister">
+           <button type="button" class="btn btn-primary">Register</button>
+          </a>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="bg-dark d-print-none" style="margin: auto 0;">
+    <footer class="text-light footer">
+     <div class="container py-3">
+      <div class="text-muted d-print-none">
+       <div class="p-3"></div>
+
+       Copyright &copy; Get-Job-Openings
+
+       <div class="p-3"></div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+ </body>
+</html>

@@ -2,20 +2,12 @@
 <html lang="en">
  <head>
   <meta charset="utf-8" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="keywords" content="" />
   <meta name="csrf-token" content="SybQfkIn3LowOH88TyQyUo1kDlgWMmih8Wq1mc51" />
   <meta name="theme-color" content="#c25054" />
-  <link rel="manifest" href="/manifest.json" />
-  <meta property="og:url" content="https://xplore.co.in/jobs" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Jobs " />
-  <meta property="og:description" content="" />
-  <meta property="og:image" content="" />
-  <title>Jobs</title>
-  <link rel="shortcut icon" href="https://xplore.co.in/favicon_xplore.ico" />
+  <title>Home</title>
+  <link rel="shortcut icon" href="/images/favicon.ico" />
   <link href="/css/style.css" rel="stylesheet" />
  </head>
  <body>
@@ -26,7 +18,7 @@
       <div id="app">
        <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand abs" href="http://localhost:4000/" aria-label="Homepage">
-         <img src="https://xplore.co.in/img/xplore.png " width="100px" class="ml-md-1" alt="Xplore logo " type="image/png" />
+         <img src="/images/Logo.png" width="100px" class="ml-md-1" alt="Get-Job-Openings" type="image/png" />
         </a>
         <div class="naukriBorder" style="border-radius: 40px; border: 1px solid var(--N400, #e7e7f1); width: 880px;">
          <div class="collapse navbar-collapse" id="navbarNav" style="font-weight: bold;">
@@ -34,7 +26,7 @@
           <ul class="navbar-nav ml-auto mt-4 mt-lg-0">
            <div class="naukri" style="padding-top: 9px; padding-bottom: 9px; padding-right: 9px;">
             <li style="margin-right: 0px;">
-             <input id="inputA" class="inputA form-control input-group-prepend" placeholder="Enter two primary skills" tabindex="0" type="text" value="" style="width: 370px; border: none;" />
+             <input id="inputA" class="inputA form-control input-group-prepend" placeholder="Enter two primary skills" tabindex="0" type="text" value="<%= locals.jobSkills %>" style="width: 370px; border: none;" />
 
              <ul id="dropdownA" class="dropdown-menu" style="width: 350px; left: 175px; top: 65px;">
               <% jobs.data.uniqueskills.forEach(element => { %>
@@ -58,20 +50,21 @@
               title=""
               placeholder="Select experience"
               type="text"
-              value=""
+              value="<%= locals.jobExperience %>"
               name="experienceDD"
               tabindex="0"
-              style=" width: 175px; background-color: #fff;"
+              style="width: 175px; background-color: #fff;"
               readonly
              />
 
              <ul id="dropdownB" class="dropdown-menu" style="left: -10px; top: 40px;">
               <li value="0" title="Fresher">Fresher (less than 1 year)</li>
 
-              <% for(let j=1;j<=25;j++) { %>
+              <% for(let j=1;j<=14;j++) { %>
               <li value="<%=j%>" title="<%=j%> years"><%=j%> years</li>
 
               <% } %>
+              <li value="15" title="">15+ years</li>
              </ul>
             </div>
 
@@ -80,7 +73,7 @@
            <div class="nI-gNb-sb__seperator" style="width: 1.3px;"></div>
            <div class="naukri" style="width: 185px; padding-top: 9px; padding-bottom: 9px;">
             <div class="dropdown-container" id="dropdown-container2">
-             <input id="inputC" class="form-control input-group-prepend inputC" placeholder="Enter location" tabindex="0" type="text" value="<%= locals.jobLocation %>" style=" width: 175px;" />
+             <input id="inputC" class="form-control input-group-prepend inputC" placeholder="Enter location" tabindex="0" type="text" value="<%= locals.jobLocation %>" style="width: 175px;" />
 
              <ul id="dropdownC" class="dropdown-menu" style="left: -10px; top: 40px;">
               <% jobs.data.uniqueJobLocations.forEach(element => { %>
@@ -119,29 +112,29 @@
            <div class="bg-white p-4 p-md-5 mb-4">
             <div class="media">
              <div class="mr-4 d-none d-md-block" style="width: 100px;">
-              <img class="mr-3 w-100" src="https://s3-xplore.s3.ap-south-1.amazonaws.com/post/job_31289.png" alt="Genpact is hiring 2020-2024 graduates (freshers and experienced) – Hindi ( Voice Process )" />
+              <img class="mr-3 w-100" style="height: 37px;" src="/images/<%=element.CompanyName%>" alt="Genpact is hiring 2020-2024 graduates (freshers and experienced) – Hindi ( Voice Process )" />
              </div>
              <div class="media-body">
               <div class="mb-4">
-               <a href="https://xplore.co.in/jobs/31289">
+               <a href="/jobs/<%=element.jobId%>">
                 <h2 class="mt-0">
                  <%= element.role %>
                  <span class="badge badge-warning float-right">open</span>
                 </h2>
                </a>
-               <%= element.jobTitle %>
+               <%= element.jobTitleA %>
               </div>
               <div class="mb-4">
                <div class="row mb-2">
                 <div class="col-5 col-md-4"><i class="fa fa-map-marker"></i>&nbsp; Locations</div>
                 <div class="col-7 col-md-8">
-                 <%= element.jobLocation %>
+                 <% let locArray = [...element.jobLocation]; locArray.forEach(temp => { %> <%= temp+", "%> <% }); %>
                 </div>
                </div>
                <div class="row mb-2">
                 <div class="col-5 col-md-4"><i class="fa fa-university"></i>&nbsp; Experience</div>
                 <div class="col-7 col-md-8">
-                 <%=Math.min(...element.jobExperience) %> - <%= Math.max(...element.jobExperience) %> Yrs
+                 <% if(element.jobExperience==1) { %> <%= "Fresher" %> <% } else { %> <%=Math.min(...element.jobExperience) %> - <%= Math.max(...element.jobExperience) %> Yrs <% } %>
                 </div>
                </div>
                <div class="row mb-2">
@@ -159,7 +152,7 @@
                 <div class="col-7 col-md-8">NOT DISCLOSED</div>
                </div>
               </div>
-              <a href="https://xplore.co.in/jobs/31289" class="btn btn-primary mb-4">View details</a>
+              <a href="/jobs/<%=element.jobId%>" class="btn btn-primary mb-4">View details</a>
              </div>
             </div>
            </div>
@@ -206,11 +199,6 @@
           </div>
          </div>
         </div>
-        <div class="col-12 col-md-3">
-         <div class="mt-4">
-          <form class="w-100" method="GET" action="https://xplore.co.in/exam"></form>
-         </div>
-        </div>
        </div>
       </div>
      </div>
@@ -220,86 +208,13 @@
   <div class="bg-dark d-print-none" style="margin: auto 0;">
    <footer class="text-light footer">
     <div class="container py-3">
-     <div class="p-3"></div>
-     <div class="row d-print-none">
-      <div class="col-6 col-md">
-       <div class="display-3">XPLORE</div>
-      </div>
-      <div class="col-6 col-md">
-       <h5>Xplore</h5>
-       <ul class="list-unstyled text-small">
-        <li>
-         <a class="text-muted" href="https://xplore.co.in/about-corporate">About</a>
-        </li>
-        <li>
-         <a class="text-muted" href="https://xplore.co.in/productpage">Products</a>
-        </li>
-        <li>
-         <a class="text-muted" href="https://xplore.co.in/contact">Contact</a>
-        </li>
-       </ul>
-      </div>
-      <div class="col-6 col-md">
-       <h5>Resources</h5>
-       <ul class="list-unstyled text-small">
-        <li>
-         <a class="text-muted" href="https://xplore.co.in/course">Courses</a>
-        </li>
-        <li>
-         <a class="text-muted" href="https://xplore.co.in/test">Tests</a>
-        </li>
-        <li>
-         <a class="text-muted" href="https://xplore.co.in/blog">Blog</a>
-        </li>
-       </ul>
-      </div>
-      <div class="col-6 col-md">
-       <h5>More</h5>
-       <ul class="list-unstyled text-small">
-        <li>
-         <a class="text-muted" href="https://xplore.co.in/terms-corporate">Terms</a>
-        </li>
-        <li>
-         <a class="text-muted" href="https://xplore.co.in/privacy">Privacy</a>
-        </li>
-        <li>
-         <a class="text-muted" href="https://xplore.co.in/refund">Refund and Cancellation</a>
-        </li>
-        <li>
-         <a class="text-muted" href="https://xplore.co.in/disclaimer">Disclaimer</a>
-        </li>
-       </ul>
-      </div>
-      <div class="col-6 col-md">
-       <div class="">
-        <div class="mb-2">
-         <a class="text-muted mr-2 mr-md-3" rel="noreferrer" target="_blank" href="https://www.facebook.com/xplore.co.in/"><i class="fa fa-facebook-square fa-2x" aria-label="facebook page"></i></a>
-        </div>
-        <div class="mb-2">
-         <a class="text-muted" rel="noreferrer" target="_blank" href="https://www.instagram.com/xplore.co.in/" aria-label="xplore instagram page"><i class="fa fa-instagram fa-2x"></i></a>
-        </div>
-       </div>
-      </div>
-     </div>
      <div class="text-muted d-print-none">
-      <hr />
-      Copyright &copy; Xplore
+      <div class="p-3"></div>
+
+      Copyright &copy; Get-Job-Openings
+
+      <div class="p-3"></div>
      </div>
-     <div class="text-muted d-none d-print-block">
-      <img src="https://xplore.co.in/img/xplore.png" class="w-100 mb-4" style="max-width: 80px;" alt="xplore logo white" />
-      <p>
-       At Xplore, we make learning simple, interesting and effective. Our Industry-leading Campus Recruitment Module includes granular, and comprehensive courses in quantitative aptitude, verbal ability, logical reasoning, interview skills,
-       programming concepts, and coding.
-      </p>
-      <p>
-       Our resource pool of over 10,000 questions is custom-designed and curated to help you crack national recruitment tests conducted by TCS, Wipro, Infosys, Capgemini and more.
-      </p>
-      <p><a href="https://xplore.co.in">xplore.co.in</a></p>
-      <hr />
-      Copyright &copy; Xplore
-      <hr />
-     </div>
-     <div class="p-4"></div>
     </div>
    </footer>
   </div>

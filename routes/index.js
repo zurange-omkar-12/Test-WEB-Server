@@ -2,6 +2,12 @@ import express from "express";
 import path from "path";
 import axios from "axios";
 import bodyParser from "body-parser";
+import fs from 'fs';
+
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // var jobDetails = [
 
@@ -45,6 +51,33 @@ app.set("views", path.join(process.cwd(), "../views")); //This line sets the dir
 
 // });
 
+
+app.get('/images/:CompanyName', (req, res) => {
+
+  //console.log(__filename); // /home/omkar-zurange/TestServer/webServer/routes/index.js
+  //console.log(__dirname); // /home/omkar-zurange/TestServer/webServer/routes
+  
+  
+
+  const imageDir = path.join(__dirname, '../public/images');
+  const imageName = req.params.CompanyName + ".png";
+  const defaultImage = 'Logo.png';
+
+  //console.log(imageName);
+  
+
+  // Check if the image exists
+  const imagePath = path.join(imageDir, imageName);
+  const imageSrc = fs.existsSync(imagePath) ? imageName : defaultImage;
+
+  //console.log(path.join(imageDir, imageSrc));
+  
+
+  res.sendFile(path.join(imageDir, imageSrc));
+});
+
+
+
 app.get("/", async (req, res) => {
   try {
     let page = parseInt(req.query.page) || 1;
@@ -55,32 +88,38 @@ app.get("/", async (req, res) => {
       "http://103.211.219.31:3000/all?page=" + page
     );
 
-    // console.log("/"+jobDetails.data.pageNo);
+    // console.log(jobDetails.data.uniqueskills);
 
     res.render("index.ejs", { jobs: jobDetails });
   } catch (error) {}
 });
 
 app.get("/filter", async (req, res) => {
- 
-
   try {
-    let page = parseInt(req.query.page) || 1;
-    let jobLocation = req.query.jobLocation || "";
+    const jobLocation = req.query.jobLocation || "";
+    let jobExperience = req.query.jobExperience || "";
+    const jobSkills = req.query.jobSkills || "";
+    const pageNo = parseInt(req.query.page) || 1;
 
-    //    console.log(page);
-
-    const jobDetails = await axios.get(
-      "http://103.211.219.31:3000/filter?jobLocation=" +
-        jobLocation +
-        "&page=" +
-        page
+    console.log(
+      `/filter?jobSkills=${jobSkills}&jobExperience=${jobExperience}&jobLocation=${jobLocation}`
     );
 
-    // console.log("/"+jobDetails.data.pageNo);
+    const jobDetails = await axios.get(
+      `http://103.211.219.31:3000/filter?jobSkills=${jobSkills}&jobExperience=${jobExperience}&jobLocation=${jobLocation}&page=${pageNo}`
+    );
 
-    res.render("index.ejs", { jobs: jobDetails, jobLocation: jobLocation });
-  } catch (error) {}
+    console.log("/" + jobDetails.data.pageNo);
+    
+    res.render("index.ejs", {
+      jobs: jobDetails,
+      jobLocation: jobLocation,
+      jobExperience: jobExperience,
+      jobSkills: jobSkills,
+    });
+  } catch (error) {
+    res.redirect("/");
+  }
 });
 
 // app.get("/all",async (req,res)=> {
@@ -94,13 +133,21 @@ app.get("/getJobLocation", async (req, res) => {
     const jobLocation = await axios.get(
       "http://103.211.219.31:3000/jobLocation"
     );
-
     res.json(jobLocation.data);
+  } catch (error) {}
+});
+
+app.get("/jobs/:jobId", async (req, res) => {
+  const jobreqId = req.params.jobId;
+
+  try {
+    const JOB = await axios.get(`http://103.211.219.31:3000/jobs/${jobreqId}`);
+
+    res.render("jobs.ejs", { JOB: JOB });
   } catch (error) {}
 });
 
 app.listen(port, () => {
   //console.log(process.cwd());
-
   console.log(`website is online on port ${port}`);
 });
