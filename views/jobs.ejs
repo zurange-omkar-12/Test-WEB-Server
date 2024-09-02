@@ -16,6 +16,8 @@
   <meta property="og:description"   content="" />
   <meta property="og:image"         content="" />
   <title><%= JOB.data.jobTitleB %>"</title>
+  <meta name="robots" content="index">
+  <link rel="icon" href="/images/favicon.ico">
   <link rel="shortcut icon" href="/images/favicon.ico" />
   <link href="/css/style.css" rel="stylesheet" />
  </head>
@@ -74,7 +76,7 @@
 
            <% } else {%>
 
-           <a href="<%= JOB.data.applyLink %>" data-toggle="modal" class="btn btn-lg btn-success w-100" data-target="#myModal2"> Apply Now</a>
+           <a href="<%= JOB.data.applyLink %>" data-toggle="modal" class="btn btn-lg btn-success w-100" data-target="#myModal2" target="_blank"> Apply Now</a>
 
            <% } %>
           </div>
