@@ -2,12 +2,24 @@
 <html lang="en">
  <head>
   <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="csrf-token" content="SybQfkIn3LowOH88TyQyUo1kDlgWMmih8Wq1mc51" />
+  <meta name="description" content="Get-Job-Openings is the easiest and fastest way to get a job." />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Omkar Z" />
+  <!-- <meta name="csrf-token" content="jimCfDMacxuxH7Evwd8epee12NdOvCzM4WC3gT9W" /> -->
   <meta name="theme-color" content="#c25054" />
-  <title>Home</title>
+  <!-- <link rel="manifest" href="/manifest.json" /> -->
+  <meta property="og:url" content="https://getjobopenings.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jobs" />
+  <meta property="og:description" content="" />
+  <meta property="og:image" content="" />
+  <title>Get-Job-Openings | Find Jobs Near You |</title>
+
   <link rel="shortcut icon" href="/images/favicon.ico" />
+
   <link href="/css/style.css" rel="stylesheet" />
  </head>
  <body>
@@ -17,78 +29,79 @@
      <div class="container p-md-0">
       <div id="app">
        <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand abs" href="http://localhost:4000/" aria-label="Homepage">
-         <img src="/images/Logo.png" width="100px" class="ml-md-1" alt="Get-Job-Openings" type="image/png" />
+        <a class="navbar-brand abs" href="https://getjobopenings.com/" aria-label="Homepage">
+         <img src="/images/Logo.png" width="100px" class="ml-md-1" alt="getjobopenings logo" type="image/png" />
         </a>
-        <div class="naukriBorder" style="border-radius: 40px; border: 1px solid var(--N400, #e7e7f1); width: 880px;">
-         <div class="collapse navbar-collapse" id="navbarNav" style="font-weight: bold;">
-          <ul class="navbar-nav"></ul>
-          <ul class="navbar-nav ml-auto mt-4 mt-lg-0">
-           <div class="naukri" style="padding-top: 9px; padding-bottom: 9px; padding-right: 9px;">
-            <li style="margin-right: 0px;">
-             <input id="inputA" class="inputA form-control input-group-prepend" placeholder="Enter two primary skills" tabindex="0" type="text" value="<%= locals.jobSkills %>" style="width: 370px; border: none;" />
 
-             <ul id="dropdownA" class="dropdown-menu" style="width: 350px; left: 175px; top: 65px;">
-              <% jobs.data.uniqueskills.forEach(element => { %>
-              <li value="<%=element%>" title="<%=element%>"><%=element%></li>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav" style="font-weight: bold; place-content: center;">
+         <ul class="navbar-nav"></ul>
+         <ul class="navbar-nav mt-4 mt-lg-0">
+          <li>
+           <div class="dropdown-container" id="dropdown-container0" style="margin: 10px;">
+            <input id="inputA" class="inputA form-control input-group-prepend dropdown-input" placeholder="Enter two primary skills" tabindex="0" type="text" value="<%= locals.jobSkills %>" />
 
-              <% }); %>
-             </ul>
-            </li>
+            <ul id="dropdownA" class="dropdown-menu" style="position: absolute;">
+             <% jobs.data.uniqueskills.forEach(element => { %>
+             <li value="<%=element%>" title="<%=element%>"><%=element%></li>
+
+             <% }); %>
+            </ul>
            </div>
+          </li>
 
-           <div class="nI-gNb-sb__seperator" style="width: 1px;"></div>
-           <div class="naukri" style="width: 185px; padding-top: 9px; padding-bottom: 9px;">
-            <!--          -->
+          <li>
+           <div class="dropdown-container" id="dropdown-container1" style="margin: 10px;">
+            <input
+             class="form-control input-group-prepend dropdown-input inputB"
+             id="inputB"
+             spellcheck="false"
+             autocomplete="off"
+             title=""
+             placeholder="Select experience"
+             type="text"
+             value="<%= locals.jobExperience %>"
+             name="experienceDD"
+             tabindex="0"
+             style="background-color: #fff;"
+             readonly
+            />
 
-            <div class="dropdown-container" id="dropdown-container1">
-             <input
-              class="form-control input-group-prepend dropdown-input inputB"
-              id="inputB"
-              spellcheck="false"
-              autocomplete="off"
-              title=""
-              placeholder="Select experience"
-              type="text"
-              value="<%= locals.jobExperience %>"
-              name="experienceDD"
-              tabindex="0"
-              style="width: 175px; background-color: #fff;"
-              readonly
-             />
+            <ul id="dropdownB" class="dropdown-menu" style="position: absolute;">
+             <li value="0" title="Fresher">Fresher (less than 1 year)</li>
 
-             <ul id="dropdownB" class="dropdown-menu" style="left: -10px; top: 40px;">
-              <li value="0" title="Fresher">Fresher (less than 1 year)</li>
+             <% for(let j=1;j<=14;j++) { %>
+             <li value="<%=j%>" title="<%=j%> years"><%=j%> years</li>
 
-              <% for(let j=1;j<=14;j++) { %>
-              <li value="<%=j%>" title="<%=j%> years"><%=j%> years</li>
-
-              <% } %>
-              <li value="15" title="">15+ years</li>
-             </ul>
-            </div>
-
-            <!--                     -->
+             <% } %>
+             <li value="15" title="">15+ years</li>
+            </ul>
            </div>
-           <div class="nI-gNb-sb__seperator" style="width: 1.3px;"></div>
-           <div class="naukri" style="width: 185px; padding-top: 9px; padding-bottom: 9px;">
-            <div class="dropdown-container" id="dropdown-container2">
-             <input id="inputC" class="form-control input-group-prepend inputC" placeholder="Enter location" tabindex="0" type="text" value="<%= locals.jobLocation %>" style="width: 175px;" />
+          </li>
 
-             <ul id="dropdownC" class="dropdown-menu" style="left: -10px; top: 40px;">
-              <% jobs.data.uniqueJobLocations.forEach(element => { %>
-              <li value="<%=element%>" title="<%=element%>"><%=element%></li>
+          <li>
+           <div class="dropdown-container" id="dropdown-container2" style="margin: 10px;">
+            <input id="inputC" class="form-control input-group-prepend inputC dropdown-input" placeholder="Enter location" tabindex="0" type="text" value="<%= locals.jobLocation %>" />
 
-              <% }); %>
-             </ul>
-            </div>
+            <ul id="dropdownC" class="dropdown-menu" style="left: -10px; top: 40px; position: absolute;">
+             <% jobs.data.uniqueJobLocations.forEach(element => { %>
+             <li value="<%=element%>" title="<%=element%>"><%=element%></li>
+
+             <% }); %>
+            </ul>
            </div>
-           <button class="btn btn-primary" style="margin: auto; border-radius: 60px; height: 40px; margin-right: 16px;" tabindex="0" type="submit" onclick="handleSubmit()">
-            <span class="ni-gnb-icn ni-gnb-icn-search"></span>
-            <span>Search</span>
-           </button>
-          </ul>
-         </div>
+          </li>
+
+          <li>
+           <div style="margin: 10px;">
+            <button class="btn btn-primary" style="border-radius: 60px;" tabindex="0" type="submit" onclick="handleSubmit()">
+             <span>Search</span>
+            </button>
+           </div>
+          </li>
+         </ul>
         </div>
        </nav>
       </div>
@@ -99,6 +112,7 @@
      <div class="banner">
       <img src="https://xplore.co.in/img/jobs.jpg" class="w-100" />
      </div>
+
      <div class="bg-light">
       <div class="container">
        <div class="row">
@@ -109,7 +123,7 @@
          <div class="">
           <div id="search-items">
            <% jobs.data.data.forEach(element=> { %>
-           <div class="bg-white p-4 p-md-5 mb-4">
+           <div class="bg-white p-4 p-md-4 mb-4">
             <div class="media">
              <div class="mr-4 d-none d-md-block" style="width: 100px;">
               <img class="mr-3 w-100" style="height: 37px;" src="/images/<%=element.CompanyName%>" alt="Genpact is hiring 2020-2024 graduates (freshers and experienced) – Hindi ( Voice Process )" />
@@ -126,29 +140,45 @@
               </div>
               <div class="mb-4">
                <div class="row mb-2">
-                <div class="col-5 col-md-4"><i class="fa fa-map-marker"></i>&nbsp; Locations</div>
+                <div class="col-5 col-md-4">
+                 <!-- <i class="fa fa-map-marker"></i>&nbsp;  -->
+
+                 Locations
+                </div>
                 <div class="col-7 col-md-8">
                  <% let locArray = [...element.jobLocation]; locArray.forEach(temp => { %> <%= temp+", "%> <% }); %>
                 </div>
                </div>
                <div class="row mb-2">
-                <div class="col-5 col-md-4"><i class="fa fa-university"></i>&nbsp; Experience</div>
+                <div class="col-5 col-md-4">
+                 <!-- <i class="fa fa-university"></i>&nbsp; -->
+                 Experience
+                </div>
                 <div class="col-7 col-md-8">
                  <% if(element.jobExperience==1) { %> <%= "Fresher" %> <% } else { %> <%=Math.min(...element.jobExperience) %> - <%= Math.max(...element.jobExperience) %> Yrs <% } %>
                 </div>
                </div>
                <div class="row mb-2">
-                <div class="col-5 col-md-4"><i class="fa fa-calendar"></i>&nbsp; Skills<span class="d-none d-md-inline"> </span></div>
+                <div class="col-5 col-md-4">
+                 <!-- <i class="fa fa-calendar"></i>&nbsp; -->
+                 Skills<span class="d-none d-md-inline"> </span>
+                </div>
                 <div class="col-7 col-md-8">
                  <% element.skills.forEach(element => { element = element+", "; %> <%= element %> <% }); %>
                 </div>
                </div>
                <div class="row mb-2">
-                <div class="col-5 col-md-4"><i class="fa fa-graduation-cap"></i>&nbsp; Acad<span class="d-none d-md-inline">emic</span>s</div>
+                <div class="col-5 col-md-4">
+                 <!-- <i class="fa fa-graduation-cap"></i>&nbsp; -->
+                 Acad<span class="d-none d-md-inline">emic</span>s
+                </div>
                 <div class="col-7 col-md-8">55% & above</div>
                </div>
                <div class="row mb-2">
-                <div class="col-5 col-md-4"><i class="fa fa-flickr"></i>&nbsp; Salary</div>
+                <div class="col-5 col-md-4">
+                 <!-- <i class="fa fa-flickr"></i>&nbsp; -->
+                 Salary
+                </div>
                 <div class="col-7 col-md-8">NOT DISCLOSED</div>
                </div>
               </div>
@@ -157,6 +187,7 @@
             </div>
            </div>
            <% }); %>
+
            <nav aria-label="Page navigation  " class="card-nav mt-3">
             <ul class="pagination">
              <% if(parseInt(jobs.data.pageNo)==1) { %>
@@ -199,22 +230,27 @@
           </div>
          </div>
         </div>
+        <div class="col-12 col-md-3">
+         <div class="mt-4"></div>
+        </div>
        </div>
       </div>
      </div>
     </div>
    </div>
   </div>
+
   <div class="bg-dark d-print-none" style="margin: auto 0;">
    <footer class="text-light footer">
     <div class="container py-3">
+     <div class="p-3"></div>
+
      <div class="text-muted d-print-none">
-      <div class="p-3"></div>
-
+      <hr />
       Copyright &copy; Get-Job-Openings
-
-      <div class="p-3"></div>
      </div>
+
+     <div class="p-4"></div>
     </div>
    </footer>
   </div>

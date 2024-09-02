@@ -4,11 +4,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="csrf-token" content="WYwmTpROiQY9iLZouN6mYHx1uckWWiwccZWFoI9I" />
-  <meta name="theme-color" content="#c25054" />
+  <meta name="description" content="<%= JOB.data.jobTitleB %>"/>
+  <meta name="keywords" content="" />
+  <meta name="author" content="Omkar Z" />
+  <!-- <meta name="csrf-token" content="h4RU1igRst6wnJQal6ZuSS34liiOekSoHSUpz733"> -->
+      <meta name="theme-color" content="#c25054"/>
+      <!-- <link rel="manifest" href="/manifest.json"> -->
+  <meta property="og:url"           content="https://getjobopenings.com/jobs/<%= JOB.data.jobId %>" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content=" <%= JOB.data.jobTitleB %> " />
+  <meta property="og:description"   content="" />
+  <meta property="og:image"         content="" />
   <title><%= JOB.data.jobTitleB %>"</title>
   <link rel="shortcut icon" href="/images/favicon.ico" />
-  <link href="/css/style2.css" rel="stylesheet" />
+  <link href="/css/style.css" rel="stylesheet" />
  </head>
  <body>
   <div id="app" style="min-height: 90vh; display: flex; flex-direction: column;">
@@ -74,39 +83,53 @@
            <h3>Information</h3>
 
            <div class="row mb-2">
-            <div class="col-6"><i class="fa fa-university"></i>&nbsp; Company</div>
+            <div class="col-6">
+                <!-- <i class="fa fa-university"></i>&nbsp;  -->
+                Company</div>
             <div class="col-6"><%= JOB.data.CompanyName %></div>
            </div>
 
            <div class="row mb-2">
-            <div class="col-6"><i class="fa fa-university"></i>&nbsp; Job Role</div>
+            <div class="col-6">
+                <!-- <i class="fa fa-university"></i>&nbsp; -->
+                 Job Role</div>
             <div class="col-6"><%= JOB.data.role %></div>
            </div>
 
            <div class="row mb-2">
-            <div class="col-6"><i class="fa fa-map-marker"></i>&nbsp; Locations</div>
+            <div class="col-6">
+                <!-- <i class="fa fa-map-marker"></i>&nbsp;  -->
+                Locations</div>
             <div class="col-6"> <% let temp1 = [...JOB.data.jobLocation]; temp1.forEach(element => { %> <%= element+", "%> <% }); %></div>
            </div>
 
            <div class="row mb-2">
-            <div class="col-6"><i class="fa fa-calendar"></i>&nbsp; Required Skills</div>
+            <div class="col-6">
+                <!-- <i class="fa fa-calendar"></i>&nbsp; -->
+                 Required Skills</div>
             <div class="col-6"><% let temp2 = [...JOB.data.skills]; temp2.forEach(element => { %> <%= element+", "%> <% }); %></div>
            </div>
 
            <div class="row mb-2">
-            <div class="col-6"><i class="fa fa-graduation-cap"></i>&nbsp; Experience</div>
+            <div class="col-6">
+                <!-- <i class="fa fa-graduation-cap"></i>&nbsp;  -->
+                Experience</div>
             <div class="col-6">
              <% if(JOB.data.jobExperience==1) { %> <%= "Fresher" %> <% } else { %> <%=Math.min(...JOB.data.jobExperience) %> - <%= Math.max(...JOB.data.jobExperience) %> Yrs <% } %>
             </div>
            </div>
 
            <div class="row mb-2">
-            <div class="col-6"><i class="fa fa-graduation-cap"></i>&nbsp; Academics</div>
+            <div class="col-6">
+                <!-- <i class="fa fa-graduation-cap"></i>&nbsp;  -->
+                Academics</div>
             <div class="col-6">55% & above</div>
            </div>
 
            <div class="row mb-2">
-            <div class="col-6"><i class="fa fa-flickr"></i>&nbsp; Salary</div>
+            <div class="col-6">
+                <!-- <i class="fa fa-flickr"></i>&nbsp; -->
+                 Salary</div>
             <div class="col-6">
              NOT DISCLOSED
             </div>
@@ -117,7 +140,7 @@
        </div>
       </div>
 
-      <div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel2" aria-hidden="true">
+      <!-- <div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel2" aria-hidden="true">
        <div class="modal-dialog modal-lg">
         <div class="modal-content">
          <div class="modal-body">
@@ -135,7 +158,7 @@
          </div>
         </div>
        </div>
-      </div>
+      </div> -->
      </div>
     </div>
    </div>

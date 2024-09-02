@@ -278,3 +278,72 @@ inputC.addEventListener("input", () => {
   inputC.style.borderColor = "";
   inputC.placeholder = "Enter location";
 });
+
+
+function toggleInputs() {
+  var inputDivs = document.getElementById('inputDivs');
+  if (inputDivs.style.display === 'none' || inputDivs.style.display === '') {
+      inputDivs.style.display = 'block';
+  } else {
+      inputDivs.style.display = 'none';
+  }
+}
+
+document.querySelector('.navbar-toggler').addEventListener('click', function () {
+  const navbarDiv = document.getElementById('navbarNav');
+  const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+  // Toggle the aria-expanded attribute
+  this.setAttribute('aria-expanded', !isExpanded);
+
+  if (isExpanded) {
+      // Start collapsing: Set height to scrollHeight first
+      navbarDiv.style.height = navbarDiv.scrollHeight + 'px';
+      
+      // Trigger reflow to apply the height before collapsing
+      navbarDiv.offsetHeight;
+
+      // Then set the height to 0
+      navbarDiv.style.height = '0';
+      
+      // Handle collapse: remove 'show' class and add 'collapsing'
+      navbarDiv.classList.remove('show');
+      navbarDiv.classList.add('collapsing');
+
+      // Handle the transition end event
+      navbarDiv.addEventListener('transitionend', function onCollapse() {
+          navbarDiv.classList.remove('collapsing');
+          navbarDiv.classList.add('collapse');
+          navbarDiv.style.height = ''; // Clean up inline styles
+          navbarDiv.removeEventListener('transitionend', onCollapse); // Clean up event listener
+      }, { once: true });
+  } else {
+      // Start expanding: Set height to 0 first
+      navbarDiv.classList.remove('collapse');
+      navbarDiv.classList.add('collapsing');
+      
+      // Temporarily set height to 0
+      navbarDiv.style.height = '0';
+      
+      // Trigger reflow
+      navbarDiv.offsetHeight;
+      
+      // Set height to scrollHeight for expansion
+      navbarDiv.style.height = navbarDiv.scrollHeight + 'px';
+      
+      // Handle expand: Add 'show' class
+      navbarDiv.classList.add('show');
+
+      // Handle the transition end event
+      navbarDiv.addEventListener('transitionend', function onExpand() {
+          navbarDiv.classList.remove('collapsing');
+         // navbarDiv.classList.add('collapse', 'show');
+          navbarDiv.style.height = ''; // Clean up inline styles
+          navbarDiv.removeEventListener('transitionend', onExpand); // Clean up event listener
+      }, { once: true });
+  }
+
+  // Toggle the 'collapsed' class on the button
+  this.classList.toggle('collapsed', !isExpanded);
+  
+});
