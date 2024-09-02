@@ -147,6 +147,71 @@ app.get("/jobs/:jobId", async (req, res) => {
   } catch (error) {}
 });
 
+
+app.get('/sitemap.xml', (req, res) => {
+
+  console.log("Sitemap");
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://getjobopenings.com/</loc>
+    <lastmod>2024-09-02T20:01:17+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://getjobopenings.com/jobs/400</loc>
+    <lastmod>2024-09-02T20:01:17+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://getjobopenings.com/jobs/201</loc>
+    <lastmod>2024-09-02T20:01:17+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://getjobopenings.com/jobs/401</loc>
+    <lastmod>2024-09-02T20:01:17+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://getjobopenings.com/jobs/402</loc>
+    <lastmod>2024-09-02T20:01:17+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://getjobopenings.com/jobs/02</loc>
+    <lastmod>2024-09-02T20:01:17+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://getjobopenings.com/jobs/4</loc>
+    <lastmod>2024-09-02T20:01:17+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://getjobopenings.com/jobs/203</loc>
+    <lastmod>2024-09-02T20:01:17+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://getjobopenings.com/jobs/1</loc>
+    <lastmod>2024-09-02T20:01:17+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+</urlset>`;
+
+  res.header('Content-Type', 'application/xml');
+  res.send(sitemap);
+});
+
+
+
 app.listen(port, () => {
   //console.log(process.cwd());
   console.log(`website is online on port ${port}`);
