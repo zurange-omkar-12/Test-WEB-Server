@@ -66,20 +66,27 @@
            <div class="display-5 h5"><%= JOB.data.Pdate %></div>
           </div>
 
-          <% if (JOB.data.applyLink == "email") { %>
 
-          <div class="mt-3">
-           <div class="alert alert-warning alert-important" role="alert">
-            <h5>Share resume to below email</h5>
-            <div class="display-5 h5" style="font-weight: bold;"><%= JOB.data.email %></div>
-           </div>
+          <% if (JOB.data.applyOption == "Email") { %>
 
-           <% } else {%>
+            <div class="mt-3">
+                <div class="alert alert-warning alert-important" role="alert">
+                 <h5>Share resume to below email</h5>
+                 <div class="display-5 h5" style="font-weight: bold;"><%= JOB.data.apply %></div>
+                </div>
+     
+                <% } 
 
-           <a href="<%= JOB.data.applyLink %>" data-toggle="modal" class="btn btn-lg btn-success w-100" data-target="#myModal2" target="_blank"> Apply Now</a>
+
+
+          <% if (JOB.data.applyOption == "Link") { %>
+
+            <a href="<%= JOB.data.apply %>" data-toggle="modal" class="btn btn-lg btn-success w-100" data-target="#myModal2" target="_blank"> Apply Now</a>
 
            <% } %>
           </div>
+
+
 
           <div class="mt-4 mb-5" style="word-wrap: break-word;">
            <h3>Information</h3>
