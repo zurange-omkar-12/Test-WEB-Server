@@ -59,37 +59,42 @@
           <%- JOB.data.jobDesc %>
          </div>
         </div>
+        
+        
+
+
+
         <div class="col-12 col-md-4">
-         <div class="mt-3">
-          <div class="alert alert-warning alert-important" role="alert">
-           <h5>Application posted date</h5>
-           <div class="display-5 h5"><%= JOB.data.Pdate %></div>
-          </div>
-
-
-          <% if (JOB.data.applyOption == "Email") { %>
-
             <div class="mt-3">
-                <div class="alert alert-warning alert-important" role="alert">
-                 <h5>Share resume to below email</h5>
-                 <div class="display-5 h5" style="font-weight: bold;"><%= JOB.data.apply %></div>
-                </div>
-     
-                <% } %>
+
+
+             <div class="alert alert-warning alert-important" role="alert">
+              <h5>Application posted date</h5>
+              <div class="display-5 h5"><%= JOB.data.Pdate %></div>
+             </div>
+   
+             <% if (JOB.data.applyOption == "Email") { %>
+   
+             
+              <div class="alert alert-warning alert-important" role="alert">
+               <h5>Share resume to below email</h5>
+               <div class="display-5 h5" style="font-weight: bold;"><%= JOB.data.apply %></div>
+              </div>
+            
+              <% } %>
+              
+              <% if(JOB.data.applyOption == "Link") {%>
+   
+              <a href="<%= JOB.data.apply %>"   class="btn btn-lg btn-success w-100"  target="_blank"> Apply Now</a>
+   
+              <% } %>
+             </div>
+   
+             <div class="mt-4 mb-5" style="word-wrap: break-word;">
+              <h3>Information</h3>
 
 
 
-          <% if (JOB.data.applyOption == "Link") { %>
-
-            <a href="<%= JOB.data.apply %>" data-toggle="modal" class="btn btn-lg btn-success w-100" data-target="#myModal2" target="_blank"> Apply Now</a>
-
-           <% } %>
-          </div>
-
-
-
-          <div class="mt-4 mb-5" style="word-wrap: break-word;">
-           <h3>Information</h3>
 
            <div class="row mb-2">
             <div class="col-6">
