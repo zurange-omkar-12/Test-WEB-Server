@@ -148,6 +148,14 @@ app.get("/jobs/:jobId", async (req, res) => {
 });
 
 
+app.get('/privacy-policy',(req,res)=>{
+
+  res.render("privacy-policy.ejs");
+  
+  
+});
+
+
 app.get('/sitemap.xml', (req, res) => {
 
   console.log("Sitemap");

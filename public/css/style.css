@@ -11753,4 +11753,13 @@ tr {
    background: #555; /* Color of the scrollbar thumb on hover */
  }
  
+ .custom-link {
+   text-decoration: none;
+   color: inherit;
+ }
+
+ .custom-link:hover {
+   color: inherit;
+   text-decoration: underline;
+ }
  
